@@ -60,18 +60,6 @@ services:
       - BETTER_AUTH_SECRET=your-production-secret-key-here
       - UPSTASH_REDIS_REST_URL=http://serverless-redis-http:80
       - UPSTASH_REDIS_REST_TOKEN=example_token
-    labels:
-      - coolify.managed=true
-      - traefik.enable=true
-      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
-      - traefik.http.routers.web-http.entryPoints=http
-      - traefik.http.routers.web-http.rule=Host(`opencut.universidadisep.com`)
-      - traefik.http.routers.web-http.middlewares=redirect-to-https
-      - traefik.http.routers.web-https.entryPoints=https
-      - traefik.http.routers.web-https.rule=Host(`opencut.universidadisep.com`)
-      - traefik.http.routers.web-https.tls=true
-      - traefik.http.routers.web-https.tls.certresolver=letsencrypt
-      - traefik.http.services.web.loadbalancer.server.port=3000
     depends_on:
       db:
         condition: service_healthy
