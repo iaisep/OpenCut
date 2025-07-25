@@ -60,6 +60,8 @@ services:
       - BETTER_AUTH_SECRET=your-production-secret-key-here
       - UPSTASH_REDIS_REST_URL=http://serverless-redis-http:80
       - UPSTASH_REDIS_REST_TOKEN=example_token
+    labels:
+      - traefik.http.services.web.loadbalancer.server.port=3000
     depends_on:
       db:
         condition: service_healthy
