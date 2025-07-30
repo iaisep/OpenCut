@@ -29,6 +29,8 @@ ENV UPSTASH_REDIS_REST_TOKEN="example_token"
 ENV NEXT_PUBLIC_BETTER_AUTH_URL="http://localhost:3000"
 
 WORKDIR /app/apps/web
+ENV HOST="0.0.0.0"
+
 RUN bun run build
 
 # Production image
